@@ -21,7 +21,7 @@ public class Match {
         this.date = date;
         this.homeTeam = homeTeam;
         this.visitorTeam = visitorTeam;
-        this.result = Optional.of(result);
+        this.result = Optional.ofNullable(result);
         this.round = round;
     }
 
@@ -57,9 +57,9 @@ public class Match {
         this.result = Optional.of(new MatchResult(result));
     }
 
-//    public void setResult(MatchResult result) {
-//        this.result = Optional.of(result);
-//    }
+    public void updateResult(MatchResult result) {
+        this.result = Optional.of(result);
+    }
 
     public Integer getRound() {
         return round;

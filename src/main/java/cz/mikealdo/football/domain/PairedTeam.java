@@ -38,4 +38,22 @@ public class PairedTeam {
                 ", pairingTeamName='" + pairingTeamName + '\'' +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PairedTeam that = (PairedTeam) o;
+
+        return pairingId.equals(that.pairingId) && pairingTeamName.equals(that.pairingTeamName);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = pairingId.hashCode();
+        result = 31 * result + pairingTeamName.hashCode();
+        return result;
+    }
 }
