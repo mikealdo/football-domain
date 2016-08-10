@@ -7,6 +7,8 @@
  */
 package cz.mikealdo.football.domain;
 
+import java.util.Optional;
+
 /***
  * Domain object for team.
  * @author Michal Davidek
@@ -15,28 +17,30 @@ package cz.mikealdo.football.domain;
  */
 public class Team {
     private Long id;
-    private Integer pairingId;
     private String description;
     private String preferredTeamName;
     private String clubInnerTeamName;
-    private String pairingTeamName;
+    private Optional<PairedTeam> pairedTeam;
 
     public Team() {
     }
 
-    public Team(Integer pairingId) {
-        this.pairingId = pairingId;
+    public Team(PairedTeam pairedTeam) {
+        this.pairedTeam = Optional.of(pairedTeam);
     }
 
-    public Team(Integer pairingId, String pairingTeamName) {
-        this.pairingId = pairingId;
-        this.pairingTeamName = pairingTeamName;
-    }
 
-    public Team(String nameToDisplay, String clubInnerTeamName, String pairingTeamName) {
+    public Team(String nameToDisplay, String clubInnerTeamName) {
         this.preferredTeamName = nameToDisplay;
         this.clubInnerTeamName = clubInnerTeamName;
-        this.pairingTeamName = pairingTeamName;
+    }
+
+    public final boolean isTeamForPairPresent() {
+        return this.pairedTeam.isPresent();
+    }
+
+    public final boolean isTeamFullyPopulated() {
+        return id != null && !description.isEmpty() && !preferredTeamName.isEmpty() && !clubInnerTeamName.isEmpty() && pairedTeam.isPresent();
     }
 
     public final Long getId() {
@@ -45,14 +49,6 @@ public class Team {
 
     public final void setId(Long id) {
         this.id = id;
-    }
-
-    public final Integer getPairingId() {
-        return this.pairingId;
-    }
-
-    public final void setPairingId(Integer pairingId) {
-        this.pairingId = pairingId;
     }
 
     public final String getPreferredTeamName() {
@@ -79,37 +75,32 @@ public class Team {
         this.description = description;
     }
 
-    public final String getPairingTeamName() {
-        return this.pairingTeamName;
-    }
-
-    public final void setPairingTeamName(String pairingTeamName) {
-        this.pairingTeamName = pairingTeamName;
+    public Optional<PairedTeam> getPairedTeam() {
+        return pairedTeam;
     }
 
     @Override
-    public final String toString() {
-        return
-            "Team{"
-                + "pairingId=" + this.pairingId
-                + ", preferredTeamName='" + this.preferredTeamName + '\''
-                + '}';
+    public String toString() {
+        return "Team{" +
+                "id=" + id +
+                ", pairedTeam=" + pairedTeam +
+                ", preferredTeamName='" + preferredTeamName + '\'' +
+                '}';
     }
 
     @Override
-    public final boolean equals(final Object object) {
-        if (this == object) {
-            return true;
-        }
-        if (object == null || getClass() != object.getClass()) {
-            return false;
-        }
-        final Team that = (Team) object;
-        return this.pairingId.equals(that.pairingId);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Team team = (Team) o;
+
+        return id.equals(team.id);
+
     }
 
     @Override
-    public final int hashCode() {
-        return this.pairingId.hashCode();
+    public int hashCode() {
+        return id.hashCode();
     }
 }

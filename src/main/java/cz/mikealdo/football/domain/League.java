@@ -8,7 +8,7 @@ public class League {
     private Team teamForPair;
     private String name;
     private String description;
-    private List<Team> teams = new LinkedList<>();
+    private List<PairedTeam> teams = new LinkedList<>();
     private List<Match> matches = new LinkedList<>();
 
     public League(String name) {
@@ -47,11 +47,11 @@ public class League {
         this.description = description;
     }
 
-    public List<Team> getTeams() {
+    public List<PairedTeam> getTeams() {
         return teams;
     }
 
-    public void setTeams(List<Team> teams) {
+    public void setTeams(List<PairedTeam> teams) {
         this.teams = teams;
     }
 

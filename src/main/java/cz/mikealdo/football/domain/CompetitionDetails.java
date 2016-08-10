@@ -1,8 +1,9 @@
 package cz.mikealdo.football.domain;
 
+import org.joda.time.DateTime;
+
 import java.util.List;
 import java.util.Map;
-import org.joda.time.DateTime;
 
 public class CompetitionDetails {
 
@@ -10,9 +11,9 @@ public class CompetitionDetails {
 	String competitionName;
     String competitionDescription;
 	List<Match> matches;
-	List<Team> teams;
-	Map<Integer, DateTime> roundDates;
-	List<Arrival> arrivals;
+    List<PairedTeam> teams;
+    Map<Integer, DateTime> roundDates;
+    List<Arrival> arrivals;
 
 	public List<Match> getMatches() {
 		return matches;
@@ -22,13 +23,13 @@ public class CompetitionDetails {
 		this.matches = matches;
 	}
 
-	public List<Team> getTeams() {
-		return teams;
-	}
+    public List<PairedTeam> getTeams() {
+        return teams;
+    }
 
-	public void setTeams(List<Team> teams) {
-		this.teams = teams;
-	}
+    public void setTeams(List<PairedTeam> teams) {
+        this.teams = teams;
+    }
 
     public Map<Integer, DateTime> getRoundDates() {
         return roundDates;

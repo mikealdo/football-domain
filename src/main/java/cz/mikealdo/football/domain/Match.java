@@ -8,8 +8,8 @@ import java.util.Optional;
 public class Match {
 
     DateTime date;
-    Team homeTeam;
-    Team visitorTeam;
+    PairedTeam homeTeam;
+    PairedTeam visitorTeam;
     Optional<MatchResult> result = Optional.empty();
     Integer round;
     private LocalTime arrivalTime;
@@ -17,13 +17,7 @@ public class Match {
     public Match() {
     }
 
-    public Match(Integer round, Integer homeTeamPairingId, Integer visitorTeamPairingId) {
-        this.homeTeam = new Team(homeTeamPairingId);
-        this.visitorTeam = new Team(visitorTeamPairingId);
-        this.round = round;
-    }
-
-    public Match(DateTime date, Team homeTeam, Team visitorTeam, MatchResult result, Integer round) {
+    public Match(DateTime date, PairedTeam homeTeam, PairedTeam visitorTeam, MatchResult result, Integer round) {
         this.date = date;
         this.homeTeam = homeTeam;
         this.visitorTeam = visitorTeam;
@@ -39,19 +33,19 @@ public class Match {
         this.date = date;
     }
 
-    public Team getHomeTeam() {
+    public PairedTeam getHomeTeam() {
         return homeTeam;
     }
 
-    public void setHomeTeam(Team homeTeam) {
+    public void setHomeTeam(PairedTeam homeTeam) {
         this.homeTeam = homeTeam;
     }
 
-    public Team getVisitorTeam() {
+    public PairedTeam getVisitorTeam() {
         return visitorTeam;
     }
 
-    public void setVisitorTeam(Team visitorTeam) {
+    public void setVisitorTeam(PairedTeam visitorTeam) {
         this.visitorTeam = visitorTeam;
     }
 
@@ -63,9 +57,9 @@ public class Match {
         this.result = Optional.of(new MatchResult(result));
     }
 
-    public void setResult(MatchResult result) {
-        this.result = Optional.of(result);
-    }
+//    public void setResult(MatchResult result) {
+//        this.result = Optional.of(result);
+//    }
 
     public Integer getRound() {
         return round;
@@ -90,9 +84,7 @@ public class Match {
 
         Match that = (Match) o;
 
-        if (!homeTeam.equals(that.homeTeam)) return false;
-        if (!visitorTeam.equals(that.visitorTeam)) return false;
-        return round.equals(that.round);
+        return homeTeam.equals(that.homeTeam) && visitorTeam.equals(that.visitorTeam) && round.equals(that.round);
 
     }
 
