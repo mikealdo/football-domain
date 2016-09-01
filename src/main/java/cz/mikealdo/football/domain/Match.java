@@ -7,12 +7,12 @@ import java.util.Optional;
 
 public class Match {
 
-    DateTime date;
-    PairedTeam homeTeam;
-    PairedTeam visitorTeam;
-    Optional<MatchResult> result = Optional.empty();
-    Integer round;
-    private LocalTime arrivalTime;
+    private DateTime date;
+    private PairedTeam homeTeam;
+    private PairedTeam visitorTeam;
+    private Optional<MatchResult> result = Optional.empty();
+    private Integer round;
+    private String arrivalTime;
 
     public Match() {
     }
@@ -69,11 +69,11 @@ public class Match {
         this.round = round;
     }
 
-    public LocalTime getArrivalTime() {
+    public String getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(LocalTime arrivalTime) {
+    public void setArrivalTime(String arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 

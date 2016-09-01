@@ -1,11 +1,9 @@
 package cz.mikealdo.football.domain;
 
-import org.joda.time.LocalTime;
-
 public class Arrival {
 	
 	Integer round;
-	LocalTime time;
+	String time;
 
 	public Integer getRound() {
 		return round;
@@ -15,11 +13,11 @@ public class Arrival {
 		this.round = round;
 	}
 
-	public LocalTime getTime() {
+	public String getTime() {
 		return time;
 	}
 
-	public void setTime(LocalTime time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 

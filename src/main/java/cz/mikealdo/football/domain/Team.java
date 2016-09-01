@@ -20,13 +20,13 @@ public class Team {
     private String description;
     private String preferredTeamName;
     private String clubInnerTeamName;
-    private Optional<PairedTeam> pairedTeam;
+    private PairedTeam pairedTeam;
 
     public Team() {
     }
 
     public Team(PairedTeam pairedTeam) {
-        this.pairedTeam = Optional.of(pairedTeam);
+        this.pairedTeam = pairedTeam;
     }
 
 
@@ -36,11 +36,11 @@ public class Team {
     }
 
     public final boolean isTeamForPairPresent() {
-        return this.pairedTeam.isPresent();
+        return this.pairedTeam != null;
     }
 
     public final boolean isTeamFullyPopulated() {
-        return id != null && !description.isEmpty() && !preferredTeamName.isEmpty() && !clubInnerTeamName.isEmpty() && pairedTeam.isPresent();
+        return id != null && !description.isEmpty() && !preferredTeamName.isEmpty() && !clubInnerTeamName.isEmpty() && isTeamForPairPresent();
     }
 
     public final Long getId() {
@@ -76,7 +76,7 @@ public class Team {
     }
 
     public Optional<PairedTeam> getPairedTeam() {
-        return pairedTeam;
+        return Optional.ofNullable(pairedTeam);
     }
 
     @Override

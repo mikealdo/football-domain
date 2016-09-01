@@ -22,8 +22,8 @@ public class MatchResultTest {
 	public void shouldParseResultThroughConstructor() throws Exception {
 		MatchResult result = new MatchResult("2:1");
 
-		assertEquals(Long.valueOf(2L), result.getHomeGoals());
-		assertEquals(Long.valueOf(1L), result.getVisitorGoals());
+		assertEquals(2L, result.getHomeGoals());
+		assertEquals(1L, result.getVisitorGoals());
 		assertTrue(result.isResultEntered());
 	}
 
@@ -31,8 +31,8 @@ public class MatchResultTest {
 	public void shouldParseResultThroughConstructorWithBlankChars() throws Exception {
 		MatchResult result = new MatchResult("2 : 1");
 
-		assertEquals(Long.valueOf(2L), result.getHomeGoals());
-		assertEquals(Long.valueOf(1L), result.getVisitorGoals());
+		assertEquals(2L, result.getHomeGoals());
+		assertEquals(1L, result.getVisitorGoals());
 		assertTrue(result.isResultEntered());
 	}
 
@@ -54,13 +54,13 @@ public class MatchResultTest {
 	public void shouldCreateResultWithPenaltiesGiven() throws Exception {
 		MatchResult result = new MatchResult("1:1", "(PK:4:5)");
 		
-		assertEquals(Long.valueOf(1L), result.getHomeGoals());
-		assertEquals(Long.valueOf(1L), result.getVisitorGoals());
+		assertEquals(1L, result.getHomeGoals());
+		assertEquals(1L, result.getVisitorGoals());
 		assertTrue(result.isResultEntered());
 		assertTrue(result.isDraw());
 		assertTrue(result.isPenaltyShootout());
-		assertEquals(Long.valueOf(4L), result.getHomeGoalsInPenaltyShootout());
-		assertEquals(Long.valueOf(5L), result.getVisitorGoalsInPenaltyShootout());
+		assertEquals(4L, result.getHomeGoalsInPenaltyShootout());
+		assertEquals(5L, result.getVisitorGoalsInPenaltyShootout());
 		
 	}
 }
