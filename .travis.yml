@@ -17,16 +17,6 @@ env:
   - TERM=dumb
   global:
 after_success:
-- ls -l build/docker
-- ls -l build/libs
-- docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-- export REPO=mikealdo/api-test
-- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
-  ; fi`
-- docker build build/docker -t $REPO:$COMMIT
-- ls -l build/docker
-- docker tag $REPO:$COMMIT $REPO:$TAG
-- docker push $REPO
 deploy:
   provider: bintray
   file: deployBintray.json
