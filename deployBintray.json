@@ -17,7 +17,7 @@
     "public_stats": true
   },
   "version": {
-    "name": "{version}",
+    "name": "1.2",
     "desc": "Football domain objects",
     "released": "2016-11-11",
     "vcs_tag": "1.2",
